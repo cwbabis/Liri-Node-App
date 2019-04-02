@@ -2,8 +2,8 @@ require("dotenv").config();
 var axios = require("axios");
 
 
-var keys = require("./keys.js");
-var spotify = new Spotify(keys.spotify);
+/* var keys = require("./keys.js");
+ var spotify = new Spotify(keys.spotify);  */
 
 
 
@@ -13,12 +13,14 @@ var command = inputString[2];
 
 if (command === "concert-this") {
     var artist = inputString[3];
+    //%20
+    
     axios
     .get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
     .then(function(response) {
       // If the axios was successful...
       // Then log the body from the site!
-      console.log(response.data);
+      console.log(response.con);
     })
     .catch(function(error) {
       if (error.response) {
