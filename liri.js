@@ -1,6 +1,6 @@
 require("dotenv").config();
 var axios = require("axios");
-
+var moment = require('moment');
 
 /* var keys = require("./keys.js");
  var spotify = new Spotify(keys.spotify);  */
@@ -18,10 +18,15 @@ if (command === "concert-this") {
     axios
     .get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
     .then(function(response) {
-      // If the axios was successful...
-      // Then log the body from the site!
-      console.log(response.con);
+      var returningObject = response.data
+      for (i = 0; i < returningObject.length; i++){
+      console.log(response.data[i].venue.name);
+      console.log(response.data[i].venue.city);
+      console.log(moment(response.data[i].datetime).format("MM/DD/YYYY"));
+      console.log("=====================================")
+      }
     })
+  
     .catch(function(error) {
       if (error.response) {
         // The request was made and the server responded with a status code
