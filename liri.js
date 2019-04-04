@@ -1,6 +1,7 @@
 require("dotenv").config();
 require('node-spotify-api');
 
+var fs = require("fs");
 var axios = require("axios");
 var moment = require('moment');
 var keys = require("./keys.js");
@@ -62,6 +63,23 @@ else if (command === "spotify-this-song") {
   //The album that the song is from
 }
 else if (command === "movie-this") {
+  /*   var nodeArgs = process.argv;
+  
+    // Create an empty variable for holding the movie name
+    var movieName = "";
+    
+    // Loop through all the words in the node argument
+    // And do a little for-loop magic to handle the inclusion of "+"s
+    for (var i = 2; i < nodeArgs.length; i++) {
+    
+      if (i > 2 && i < nodeArgs.length) {
+        movieName = movieName + "+" + nodeArgs[i];
+      }
+      else {
+        movieName += nodeArgs[i];
+    
+      }
+    } */
 
   var movie = inputString[3];
   axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
@@ -108,16 +126,22 @@ else if (command === "movie-this") {
             console.log("Actors: " + response.data.Actors);
           });
       };
-
     }
   );
-
-
-
-
 }
 else if (command === "do-what-it-says") {
+  var text = process.argv[2];
 
+  fs.readFile("random.txt", text, function (error, data) {
+    if (error) {
+      return console.log(error);
+    }
+    else {
+      console.log(data);
+      var dataArr = data.split(",");
+      console.log(dataArr);
+    }
+  })
 }
 else {
   command = "Not a recognized command"
