@@ -1,9 +1,10 @@
 require("dotenv").config();
+require('node-spotify-api');
+
 var axios = require("axios");
 var moment = require('moment');
-
-/* var keys = require("./keys.js");
- var spotify = new Spotify(keys.spotify);  */
+var keys = require("./keys.js");
+var spotify = new Spotify(keys.spotify);
 
 
 
@@ -47,6 +48,14 @@ if (command === "concert-this") {
 }
 
 else if (command === "spotify-this-song"){
+  var song = inputString[3];
+  spotify.search({ type: 'track', query: song }, function(err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+   
+  console.log(data); 
+  });
 // command to display Artist(s)
 //The song's name
 //A preview link of the song from Spotify
