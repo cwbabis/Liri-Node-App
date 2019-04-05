@@ -1,20 +1,34 @@
 require("dotenv").config();
-require('node-spotify-api');
+var Spotify = require('node-spotify-api');
 
 var fs = require("fs");
 var axios = require("axios");
 var moment = require('moment');
 var keys = require("./keys.js");
-/* var spotify = new Spotify(keys.spotify); */
+var spotify = new Spotify(keys.spotify);
 
 
 
 var inputString = process.argv;
 var command = inputString[2];
+var userInput = inputString[3];
 
-
+if (command === "do-what-it-says") {
+  fs.readFile("random.txt", "utf8", function (error, data) {
+    if (error) {
+      return console.log(error);
+    }
+    else {
+      var dataArr = data.split(",");
+      command = (dataArr[0]);
+      userInput = dataArr[1];
+      control();
+    }
+  })
+}
+function control(){
 if (command === "concert-this") {
-  var artist = inputString[3];
+  var artist = userInput;
   //%20
 
   axios
@@ -49,13 +63,18 @@ if (command === "concert-this") {
 }
 
 else if (command === "spotify-this-song") {
-  var song = inputString[3];
+  var song = userInput;
   spotify.search({ type: 'track', query: song }, function (err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
+    console.log(data.tracks.items[0].artists[0].name);
+    console.log(data.tracks.items[0].name);
+    console.log(data.tracks.items[0].preview_url);
+    console.log(data.tracks.items[0].album.name);
+    console.log("===================================");
 
-    console.log(data);
+
   });
   // command to display Artist(s)
   //The song's name
@@ -81,7 +100,7 @@ else if (command === "movie-this") {
       }
     } */
 
-  var movie = inputString[3];
+  var movie = userInput;
   axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
     function (response) {
       // This will output the following information to your terminal/bash window:
@@ -129,20 +148,8 @@ else if (command === "movie-this") {
     }
   );
 }
-else if (command === "do-what-it-says") {
-  var text = process.argv[2];
-
-  fs.readFile("random.txt", text, function (error, data) {
-    if (error) {
-      return console.log(error);
-    }
-    else {
-      console.log(data);
-      var dataArr = data.split(",");
-      console.log(dataArr);
-    }
-  })
-}
 else {
   command = "Not a recognized command"
 }
+}
+control();
