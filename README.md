@@ -15,8 +15,8 @@ Instructions:
     
 ### Detailed Instructions For Each Command
 Option 1: `node liri.js concert-this <insert artist/band name here>`
-
     * This will search the Bands in Town Artist Events API for an artist/band and render the following information about each       event to the terminal/bash window:
+    
     ```
     - Name of the venue
     - Venue Location
@@ -24,9 +24,9 @@ Option 1: `node liri.js concert-this <insert artist/band name here>`
     ```
     
 Option 2: `node liri.js spotify-this-song <insert song name here>`
-
     * Note that this feature will only work if your provide LIRI with a Spotify Client ID and Secret in the `keys.js` file.
     * This command will search the Spotify API and render the following information about the song to the terminal/bash             window:
+    
     ```
     - Artist(s)
     - The song's name
@@ -37,7 +37,6 @@ Option 2: `node liri.js spotify-this-song <insert song name here>`
     ```
     
 Option 3: `node liri.js movie-this <movie name here>`
-
     * This command will use the OMDB API and render the following movie information to the terminal/bash window:
     
     ```
@@ -53,7 +52,6 @@ Option 3: `node liri.js movie-this <movie name here>`
     If no movie is provided then the program will default to "Mr. Nobody".
     ```
 Option 4: `node liri.js do-what-it-says`
-
     * Using the `fs` node package, LIRI will out put the command in the `random.txt` file.
     * By default, it will run `movie-this` for the movie "Inception"
     * You can edit the text in the `random.txt` file to test out the other commands as well.
