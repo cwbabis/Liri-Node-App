@@ -78,6 +78,6 @@ Option 4: `node liri.js do-what-it-says`
 * [dotenv](https://www.npmjs.com/package/dotenv) - To hide API keys :smile:
 * [Axios](https://www.npmjs.com/package/axios) - Promised base HTTP client for the browser and node.js
 
-Here's a preview of the app:
+Here's a preview of the app in super fast speed:
 
 ![](lirigif.gif "gif")
