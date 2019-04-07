@@ -80,4 +80,4 @@ Option 4: `node liri.js do-what-it-says`
 
 Here's a preview of the app:
 
-![](liripreview.gif "gif")
+![](liripreview1.gif "gif")
