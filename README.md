@@ -4,7 +4,7 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 ### How To Run LIRI Bot
 
 Instructions:
-1. Clone down the repository
+1. Clone down the repository.
 2. Navigate to the root of your project and run `npm install` to install all of the required node modules.
 
 ![](npminstall.gif "gif")
